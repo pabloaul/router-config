@@ -3,6 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./ssh.nix
     ];
 
   boot.loader = {
@@ -51,11 +52,6 @@
     micro
     wget
   ];
-
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-  };
 
   system.stateVersion = "25.05";
 }
