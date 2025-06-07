@@ -16,7 +16,7 @@
 
     networks."10-wan" = {
       matchConfig.Name = "ens3";
-      address = [ 
+      address = [
         "89.58.50.220/22"
         "2a03:4000:68:5::1/64"
       ];
@@ -52,6 +52,19 @@
     micro
     wget
   ];
+
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
 
   system.stateVersion = "25.05";
 }
