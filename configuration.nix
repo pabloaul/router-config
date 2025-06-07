@@ -10,7 +10,23 @@
     efi.canTouchEfiVariables = true;
   };
 
-  systemd.network.enable = true;
+  systemd.network = {
+    enable = true;
+
+    networks."10-wan" = {
+      matchConfig.Name = "ens3";
+      address = [ 
+        "89.58.50.220/22"
+        "2a03:4000:68:5::1/64"
+      ];
+      routes = [
+        { Gateway = "89.58.48.1"; }
+        { Gateway = "fe80::1"; }
+      ];
+
+      linkConfig.RequiredForOnline = "routable";
+    };
+  };
 
   networking = {
     hostName = "central";
