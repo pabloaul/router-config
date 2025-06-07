@@ -1,5 +1,9 @@
 { pkgs, lib, config, ... }:
 {
+  imports = [
+    ./bird.nix
+  ];
+
   systemd.network.enable = true;
 
   networking = {
