@@ -12,6 +12,8 @@
     efi.canTouchEfiVariables = true;
   };
 
+  services.qemuGuest.enable = true;
+
   time.timeZone = "Europe/Amsterdam";
   console.keyMap = "de";
 
