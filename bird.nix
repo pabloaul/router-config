@@ -3,6 +3,7 @@
   imports = [
     ./roa-dn42.nix
     ./peers/antibuilding.nix
+    ./peers/kioubit.nix
   ];
 
   services.bird = {
