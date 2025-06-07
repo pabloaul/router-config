@@ -54,6 +54,24 @@
     networkConfig = {
       IPv4Forwarding = true;
       IPv6Forwarding = true;
+      DNSDefaultRoute = false;
     };
+
+    dns = [
+      "fd42:d42:d42:54::1"
+      "172.23.0.53"
+      "fd42:d42:d42:53::1"
+      "172.20.0.53"
+    ];
+
+    domains = [
+      "~dn42"
+      "~20.172.in-addr.arpa"
+      "~21.172.in-addr.arpa"
+      "~22.172.in-addr.arpa"
+      "~23.172.in-addr.arpa"
+      "~10.in-addr.arpa"
+      "~d.f.ip6.arpa"
+    ];
   };
 }
