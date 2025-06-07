@@ -2,6 +2,7 @@
 {
   imports = [
     ./roa-dn42.nix
+    ./peers/antibuilding.nix
   ];
 
   services.bird = {
