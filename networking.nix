@@ -26,5 +26,25 @@
     linkConfig.RequiredForOnline = "routable";
   };
 
+  # dummy network (dn42)
+  systemd.network.netdevs."50-pleiades" = {
+    netdevConfig = {
+      Kind = "dummy";
+      Name = "pleiades";
+    };
+  };
 
+  systemd.network.networks."pleiades" = {
+    matchConfig.Name = "pleiades";
+
+    address = [
+      "172.23.43.33/27"
+      "fd42:deca:de::1/48"
+    ];
+
+    networkConfig = {
+      IPv4Forwarding = true;
+      IPv6Forwarding = true;
+    };
+  };
 }
