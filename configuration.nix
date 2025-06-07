@@ -24,10 +24,17 @@
   };
 
   environment.systemPackages = with pkgs; [
+    dig
+    dnsutils
     git
     micro
+    tcpdump
     wget
+    whois
+    wireguard-tools
   ];
+
+  programs.mtr.enable = true;
 
   nix = {
     settings = {
