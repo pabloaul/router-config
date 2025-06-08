@@ -16,7 +16,9 @@ in
           collector_type = "Bmp";
           bind = "[::1]:11019";
           peers = {
-            "fd42:deca:de::1" = {};
+            "fd42:deca:de::1" = {
+              name_override = "central";
+            };
           };
         };
       };
@@ -25,8 +27,8 @@ in
 
   services.bird.config = ''
     protocol bmp {
-      system name "central";
-      system description "pleiades_bmp";
+      system name "central_bmp";
+      system description "pleiades monitoring";
       local address fd42:deca:de::1;
       station address ip ::1 port 11019;
 
