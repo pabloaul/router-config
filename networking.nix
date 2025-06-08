@@ -35,12 +35,26 @@
     linkConfig.RequiredForOnline = "routable";
   };
 
-  # dummy network (dn42)
+  # client network
+  networking.firewall.allowedUDPPorts = [51820];
+
   systemd.network.netdevs."50-pleiades" = {
     netdevConfig = {
-      Kind = "dummy";
+      Kind = "wireguard";
       Name = "pleiades";
     };
+
+    wireguardConfig = {
+      PrivateKeyFile = "/etc/pleiades/hostkey";
+      ListenPort = 51820;
+    };
+
+    wireguardPeers = [
+      {
+        PublicKey = "dvJYIrYjPKLX/lJArTnapvQLPpQ6RstabpaFOQp/uFc="; # merope
+        AllowedIPs = [ "fd42:deca:de::500/128" ]; # no ipv4 for now
+      }
+    ];
   };
 
   systemd.network.networks."pleiades" = {
