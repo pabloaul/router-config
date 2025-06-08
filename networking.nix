@@ -2,6 +2,7 @@
 {
   imports = [
     ./bird.nix
+    ./fernglas.nix
   ];
 
   boot.kernel.sysctl = {
