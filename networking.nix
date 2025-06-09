@@ -2,6 +2,7 @@
 {
   imports = [
     ./bird.nix
+    ./bird-lg.nix
     ./fernglas.nix
   ];
 
