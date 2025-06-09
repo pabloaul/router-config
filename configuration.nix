@@ -5,6 +5,7 @@
       ./hardware-configuration.nix
       ./ssh.nix
       ./networking.nix
+      ./nginx.nix
     ];
 
   boot.loader = {
