@@ -63,6 +63,10 @@
         PublicKey = "0SkA0XyQUszwM7hNoAZtNL5mY3yAQIlBGmkiGzys034="; # nodservice
         AllowedIPs = [ "fd42:deca:de::1000/128" ];
       }
+      {
+        PublicKey = "mYeJ9bxIAwjTX9dbIs0wYY04Rcs7R66JTy3jVAGyQSI="; # lexi
+        AllowedIPs = [ "fd42:deca:de:7381::/64" ];
+      }
     ];
   };
 
