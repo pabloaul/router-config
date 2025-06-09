@@ -58,6 +58,10 @@
         PublicKey = "dvJYIrYjPKLX/lJArTnapvQLPpQ6RstabpaFOQp/uFc="; # merope
         AllowedIPs = [ "fd42:deca:de::500/128" ]; # no ipv4 for now
       }
+      {
+        PublicKey = "0SkA0XyQUszwM7hNoAZtNL5mY3yAQIlBGmkiGzys034="; # nodservice
+        AllowedIPs = [ "fd42:deca:de::1000/128" ];
+      }
     ];
   };
 
