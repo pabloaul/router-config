@@ -9,6 +9,7 @@
 
       wireguardConfig = {
         PrivateKeyFile = "/etc/dn42keys/kioubit";
+        ListenPort = 23914;
       };
 
       wireguardPeers = [
@@ -50,4 +51,6 @@
       ipv4 { extended next hop on; };
     }
   '';
+
+  networking.firewall.allowedUDPPorts = [ 23914 ];
 }

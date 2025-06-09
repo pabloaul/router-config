@@ -9,6 +9,7 @@
 
       wireguardConfig = {
         PrivateKeyFile = "/etc/dn42keys/antibuilding";
+        ListenPort = 21403;
       };
 
       wireguardPeers = [
@@ -49,4 +50,6 @@
       ipv4 { extended next hop on; };
     }
   '';
+
+  networking.firewall.allowedUDPPorts = [ 21403 ];
 }
