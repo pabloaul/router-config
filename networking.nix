@@ -41,7 +41,7 @@
   };
 
   # client network
-  networking.firewall.allowedUDPPorts = [51820];
+  networking.firewall.allowedUDPPorts = [ 51820 ];
 
   systemd.network.netdevs."50-pleiades" = {
     netdevConfig = {

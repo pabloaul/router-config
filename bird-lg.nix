@@ -6,6 +6,7 @@
       allowedIPs = [ "127.0.0.1" ];
       listenAddress = "127.0.0.2:8000";
     };
+
     frontend = {
       enable = true;
       netSpecificMode = "dn42";
