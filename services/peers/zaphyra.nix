@@ -25,6 +25,7 @@
     networks."zaphyra" = {
       matchConfig.Name = "zaphyra";
       address = [ "fe80::706c:6569:6164:6573/64" ];
+
       routes = [{
         Destination = "fe80::6b61/128";
       }];

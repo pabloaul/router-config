@@ -1,12 +1,11 @@
 { config, lib, pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./ssh.nix
-      ./networking.nix
-      ./nginx.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./ssh.nix
+    ./networking.nix
+    ./services
+  ];
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -27,10 +26,12 @@
   };
 
   environment.systemPackages = with pkgs; [
+    btop
     dig
     dnsutils
     git
     micro
+    nmap
     tcpdump
     wget
     whois
