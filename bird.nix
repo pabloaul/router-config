@@ -4,6 +4,7 @@
     ./roa-dn42.nix
     ./peers/antibuilding.nix
     ./peers/kioubit.nix
+    ./peers/zaphyra.nix
   ];
 
   services.bird = {
