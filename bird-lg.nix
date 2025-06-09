@@ -14,6 +14,10 @@
       listenAddress = "127.0.0.2:5000";
       proxyPort = 8000;
       protocolFilter = [ "bgp" "static" ];
+      whois = "whois.dn42";
+      navbar = {
+        brand = "pleiades";
+      };
     };
   };
 
