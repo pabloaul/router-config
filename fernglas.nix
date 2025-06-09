@@ -15,10 +15,17 @@ in
         bmp_central = {
           collector_type = "Bmp";
           bind = "[::1]:11019";
-          peers = {
-            "fd42:deca:de::1" = {
-              name_override = "central";
-            };
+          peers."fd42:deca:de::1".name_override = "central";
+        };
+        bgp_central = {
+          collector_type = "Bgp";
+          bind = "[::1]:1179";
+          peers."fd42:deca:de::1" = {
+            asn = 4242420069;
+            router_id = "172.23.43.32";
+            name_override = "central";
+            add_path = true;
+            route_state = "Accepted";
           };
         };
       };
@@ -36,6 +43,29 @@ in
       monitoring rib in post_policy on;
 
       tx buffer limit 96;
+    }
+
+    protocol bgp fernglas {
+      local as 4242420069;
+        source address fd42:deca:de::1;
+        neighbor ::1 port 1179 as 4242420069;
+        multihop 64;
+        rr client;
+        advertise hostname on;
+
+        ipv6 {
+          add paths tx;
+          import filter { reject; };
+          export filter { accept; };
+          next hop keep;
+        };
+        ipv4 {
+          add paths tx;
+          import filter { reject; };
+          export filter { accept; };
+          next hop self on;
+          extended next hop on;
+        };
     }
   '';
 
