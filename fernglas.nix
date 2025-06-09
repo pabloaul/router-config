@@ -70,14 +70,14 @@ in
   '';
 
   services.nginx = {
-      enable = true;
-      recommendedProxySettings = true;
-      virtualHosts."lg.net.nojus.org" = {
-        #enableACME = true;
-        #forceSSL = true;
-        locations."/".root = fernglas.packages.${config.nixpkgs.hostPlatform.system}.fernglas-frontend;
-        locations."/api/".proxyPass = "http://${config.services.fernglas.settings.api.bind}";
-      };
+    enable = true;
+    recommendedProxySettings = true;
+    virtualHosts."fernglas.net.nojus.org" = {
+      #enableACME = true;
+      #forceSSL = true;
+      locations."/".root = fernglas.packages.${config.nixpkgs.hostPlatform.system}.fernglas-frontend;
+      locations."/api/".proxyPass = "http://${config.services.fernglas.settings.api.bind}";
     };
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+  };
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
