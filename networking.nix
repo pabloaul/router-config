@@ -72,14 +72,18 @@
     networkConfig = {
       IPv4Forwarding = true;
       IPv6Forwarding = true;
-      DNSDefaultRoute = false;
     };
+  };
+
+  # dn42 dns split tunnel
+  systemd.network.networks."10-wan" = {
+    networkConfig.DNSDefaultRoute = false;
 
     dns = [
-      "fd42:d42:d42:54::1"
-      "172.23.0.53"
       "fd42:d42:d42:53::1"
+      "fd42:d42:d42:54::1"
       "172.20.0.53"
+      "172.23.0.53"
     ];
 
     domains = [
