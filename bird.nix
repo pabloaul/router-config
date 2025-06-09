@@ -7,6 +7,8 @@
     ./peers/zaphyra.nix
   ];
 
+  networking.firewall.allowedTCPPorts = [ 179 ];
+
   services.bird = {
       enable = true;
       package = pkgs.bird3;
