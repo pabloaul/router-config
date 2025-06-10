@@ -25,8 +25,8 @@
   networking.firewall.allowedTCPPorts = [ 5000 ];
 
   services.nginx.virtualHosts."bird-lg.net.nojus.org" = {
-    #enableACME = true;
-    #forceSSL = true;
     locations."/".proxyPass = "http://127.0.0.2:5000/";
+    useACMEHost = "net.nojus.org";
+    forceSSL = true;
   };
 }
