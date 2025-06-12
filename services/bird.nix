@@ -132,36 +132,56 @@
           path metric 1;
 
           ipv4 {
+            import limit 9000 action block;
+            import keep filtered; # potentially useful for fernglas
+
             import filter {
-              # dn42 default import: accept all prefixes from correct range and valid roa (excluding own network)
-              if is_valid_network() && !is_self_net() then {
-                if (roa_check(dn42_roa, net, bgp_path.last) != ROA_VALID) then {
-                  # Reject when unknown or invalid according to ROA
+              if !is_valid_network() then reject;
+
+              if is_self_net() then reject;
+
+              if (roa_check(dn42_roa, net, bgp_path.last) != ROA_VALID) then {
                   print "[dn42] ROA check failed for ", net, " ASN ", bgp_path.last;
                   reject;
-                } else accept;
-              } else reject;
+              }
+
+              accept;
             };
 
-            export filter { if is_valid_network() && source ~ [RTS_STATIC, RTS_BGP] then accept; else reject; }; # dn42 default export: send static and bgp routes
-            import limit 9000 action block; # block if import over 9000
-            import keep filtered;
+            export filter {
+              if !is_valid_network() then reject;
+
+              if source ~ [RTS_STATIC, RTS_BGP] then accept;
+
+              reject;
+            };
           };
 
           ipv6 {
-            import filter {
-              if is_valid_network_v6() && !is_self_net_v6() then {
-                if (roa_check(dn42_roa_v6, net, bgp_path.last) != ROA_VALID) then {
-                  # Reject when unknown or invalid according to ROA
-                  print "[dn42] ROA check failed for ", net, " ASN ", bgp_path.last;
-                  reject;
-                } else accept;
-              } else reject;
-            };
-
-            export filter { if is_valid_network_v6() && source ~ [RTS_STATIC, RTS_BGP] then accept; else reject; };
             import limit 9000 action block;
             import keep filtered;
+
+            import filter {
+
+              if !is_valid_network_v6() then reject;
+
+              if is_self_net_v6() then reject;
+
+              if (roa_check(dn42_roa_v6, net, bgp_path.last) != ROA_VALID) then {
+                print "[dn42] ROA check failed for ", net, " ASN ", bgp_path.last;
+                reject;
+              }
+
+              accept;
+            };
+
+            export filter { 
+              if !is_valid_network_v6() then reject;
+
+              if source ~ [RTS_STATIC, RTS_BGP] then accept;
+
+              reject;
+            };
           };
         }
 
