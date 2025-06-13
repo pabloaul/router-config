@@ -49,6 +49,7 @@
       neighbor fe80::1234:9320%antibuilding as 4242421403;
       enable extended messages;
       ipv4 { extended next hop on; };
+      local role peer;
     }
   '';
 

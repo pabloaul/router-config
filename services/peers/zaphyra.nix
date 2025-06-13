@@ -49,6 +49,7 @@
       neighbor fe80::6b61%zaphyra as 4242421718;
       enable extended messages;
       ipv4 { extended next hop on; };
+      local role peer;
     }
   '';
 

@@ -49,6 +49,7 @@
       neighbor fe80::ade0%kioubit as 4242423914;
       enable extended messages;
       ipv4 { extended next hop on; };
+      local role customer;
     }
   '';
 
