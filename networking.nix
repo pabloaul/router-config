@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ ... }:
 {
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = true;

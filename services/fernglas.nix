@@ -1,4 +1,4 @@
-{ pkgs, system, config, ... }:
+{ config, ... }:
 let
   fernglas = builtins.getFlake "github:wobcom/fernglas";
 in

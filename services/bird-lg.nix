@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ ... }:
 {
   services.bird-lg = {
     proxy = {
