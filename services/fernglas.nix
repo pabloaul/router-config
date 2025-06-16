@@ -54,16 +54,22 @@ in
         advertise hostname on;
 
         ipv6 {
+          import keep filtered;
+          import table on;
+          export table on;
           add paths tx;
           import filter { reject; };
           export filter { accept; };
-          next hop keep;
+          next hop keep on;
         };
+
         ipv4 {
+          import keep filtered;
+          import table on;
+          export table on;
           add paths tx;
           import filter { reject; };
           export filter { accept; };
-          next hop self on;
           extended next hop on;
         };
     }

@@ -135,6 +135,8 @@
           ipv4 {
             import limit 9000 action block;
             import keep filtered; # potentially useful for fernglas
+            import table on;
+            export table on;
 
             import filter {
               if !is_valid_network() then reject;
@@ -161,6 +163,8 @@
           ipv6 {
             import limit 9000 action block;
             import keep filtered;
+            import table on;
+            export table on;
 
             import filter {
 
