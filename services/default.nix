@@ -5,6 +5,8 @@
     ./bird.nix
     ./bird-lg.nix
     ./fernglas.nix
+    ./grafana.nix
+    ./prometheus.nix
     ./pleiades.nix
   ];
 }
