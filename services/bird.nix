@@ -4,6 +4,7 @@
     ./roa-dn42.nix
     ./peers/antibuilding.nix
     ./peers/cybertrash.nix
+    ./peers/cyclopentane.nix
     ./peers/etwas.nix
     ./peers/grognozzle.nix
     ./peers/kioubit.nix
