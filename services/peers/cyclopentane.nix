@@ -49,7 +49,7 @@
       neighbor fe80::43:59:43%cyclopentane as 4242423253;
       enable extended messages;
       ipv4 { extended next hop on; };
-      local role peer;
+      local role provider;
     }
   '';
 
