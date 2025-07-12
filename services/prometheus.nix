@@ -3,6 +3,7 @@
   services.prometheus = {
     enable = true;
     listenAddress = "127.0.0.2";
+    retentionTime = "90d";
 
     exporters = {
       node = {
