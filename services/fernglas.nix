@@ -1,11 +1,6 @@
-{ config, ... }:
-let
-  fernglas = builtins.getFlake "github:wobcom/fernglas";
-in
+{ config, inputs, ... }:
 {
-  imports = [
-    fernglas.nixosModules.default
-  ];
+  imports = [ inputs.fernglas.nixosModules.default ];
 
   services.fernglas = {
     enable = true;
@@ -76,7 +71,7 @@ in
   '';
 
   services.nginx.virtualHosts."fernglas.net.nojus.org" = {
-    locations."/".root = fernglas.packages.${config.nixpkgs.hostPlatform.system}.fernglas-frontend;
+    locations."/".root = inputs.fernglas.packages.${config.nixpkgs.hostPlatform.system}.fernglas-frontend;
     locations."/api/".proxyPass = "http://${config.services.fernglas.settings.api.bind}";
     useACMEHost = "net.nojus.org";
     forceSSL = true;
