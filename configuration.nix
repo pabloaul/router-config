@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,13 +6,6 @@
     ./networking.nix
     ./services
   ];
-
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-
-  services.qemuGuest.enable = true;
 
   time.timeZone = "Europe/Amsterdam";
   console.keyMap = "de";
