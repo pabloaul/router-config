@@ -8,6 +8,7 @@
     ./grafana.nix
     ./prometheus.nix
     ./pleiades.nix
+    ./unbound.nix
     ./weechat.nix
   ];
 }
